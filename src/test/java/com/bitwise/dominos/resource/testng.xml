@@ -3,7 +3,7 @@
 <suite verbose="1" name="Function Test Suite" >
     <test name="Functional Tests">
         <classes>
-            <class name="com.bitwise.dominos.functionaltests.tests.DashboardTests"/>
+            <class name="com.bitwise.dominos.functionaltests.tests.FunctionalTests"/>
 
         </classes>
     </test>

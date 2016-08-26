@@ -10,15 +10,13 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class DashboardPage {
 
-    private WebDriver driver;
-
     @FindBy(linkText = "Dashboard")
     private WebElement dashboardBtn;
 
     @FindBy(linkText = "PIZZAS")
     private WebElement pizzasBtn;
 
-    @FindBy(partialLinkText = "Zesty Chicken")
+    @FindBy(id = "Zesty Chicken")
     private WebElement zestyChickenPizza;
 
     @FindBy(xpath = "//button[2]")
@@ -30,21 +28,17 @@ public class DashboardPage {
 
     public DashboardPage(WebDriver driver){
 
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void orderZestyChicken(){
+    public void createZestyChickenPizzaOrder(){
         dashboardBtn.click();
-        //TODO More steps to be added
-//        zestyChickenPizza.click();
-//        saveBtn.click();
-//        pizzasBtn.click();
-
+        zestyChickenPizza.click();
+        saveBtn.click();
     }
 
     public Boolean isOnDashboardPage(){
-        return dashboardHeading.isDisplayed();
+        return dashboardHeading.getText().equals("Top Pizzas");
     }
 
 

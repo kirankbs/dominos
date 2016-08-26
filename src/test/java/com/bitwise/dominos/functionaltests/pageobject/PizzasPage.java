@@ -10,21 +10,34 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class PizzasPage {
 
-    private WebDriver driver;
-
     @FindBy(linkText = "PIZZAS")
     private WebElement pizzasBtn;
 
+    @FindBy(css = "button")
+    private WebElement checkoutBtn;
+
+    @FindBy(xpath = "//li[6]/b")
+    private WebElement zestyChickenPizza;
+
+    @FindBy(xpath = "//button[2]")
+    private WebElement saveBtn;
+
 
     public PizzasPage(WebDriver driver){
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public void orderZestyChicken() {
-
         pizzasBtn.click();
-        //TODO More steps to be added
+        zestyChickenPizza.click();
+        saveBtn.click();
 
     }
+
+    public void checkOutOrder(){
+        pizzasBtn.click();
+        checkoutBtn.click();
+    }
+
+
 }
