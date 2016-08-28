@@ -12,7 +12,7 @@ import { CrustsList }                       from './mock-pizzas';
 @Injectable()
 export class PizzaService{
 
-    private _pizzassUrl = 'http://10.130.241.86:9082/';
+    private _pizzassUrl = 'http://172.17.8.101:9082/';
 
     private headers = new Headers([{
           'Content-Type': 'application/json'},

@@ -1,51 +1,61 @@
 #!groovy
 
 node{
-   git 'https://github.com/kirankbs/dominos.git'
+    git 'https://github.com/BitwiseInc/dominos.git'
 }
-stage 'CLEAN_DEVELOPER_MODULE'
+stage 'CLEAN'
 node {
-   	sh 'chmod +x gradlew'
-  sh './gradlew clean --info'
-   }
+    sh 'chmod +x gradlew'
+    sh './gradlew clean --info'
+}
 
-stage 'BUILD_DEVELOPER_MODULE'
+stage 'BUILD'
 node {
- sh 'chmod +x gradlew'
-  sh './gradlew build --info'
+    sh 'chmod +x gradlew'
+    sh './gradlew build --info'
+}
 
-   }
+stage 'UNIT_TEST'
+node {
+    sh 'chmod +x gradlew'
+    sh './gradlew test --info'
+}
 
-stage 'CLEAR_SEREVR_ADDRESSES'
+stage 'CLEAN_EXISTINGPORTS'
 node{
-       sh 'chmod +x gradlew'
-       sh './gradlew clearApplicatioPorts'
-}   
+    sh 'chmod +x gradlew'
+    sh './gradlew clearApplicatioPorts'
+}
 
-stage 'ASSESS_COVERAGE'
+stage 'CODE_COVERAGE'
 node {
-   	sh 'chmod +x gradlew'
-  sh './gradlew jacoco --info'
-   	}
+    sh 'chmod +x gradlew'
+    sh './gradlew jacoco --info'
+}
 
 stage 'START_APPLICATION'
-    node {
-       sh 'chmod +x gradlew'
-       sh './gradlew startApplication'
-        }
+node {
+    sh 'chmod +x gradlew'
+    sh './gradlew startApplication'
+}
 
-stage 'SART_FUNCTIONAL_TESTS'
-    node {
-       sh 'chmod +x gradlew'
-       sh './gradlew functionalTest'
-        }
-
-
+stage 'FUNCTIONAL_TESTS'
+node {
+    sh 'chmod +x gradlew'
+    sh './gradlew functionalTest'
+}
 
 stage 'ARCHIVE_ARTIFACTS'
 node{
-  step([$class: 'ArtifactArchiver', artifacts: '**/build/libs/*.jar', fingerprint: true])
+    step([$class: 'ArtifactArchiver', artifacts: '**/build/libs/*.jar', fingerprint: true])
 }
 
+input message: "Does build look good. Deploy to stage?"
+
+stage name: 'Staging', concurrency: 1
+node {
+    echo 'Staging server looks to be alive'
+    echo "Deployed to staging"
+}
 
 

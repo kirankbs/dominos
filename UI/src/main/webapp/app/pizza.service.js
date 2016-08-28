@@ -14,7 +14,7 @@ require('rxjs/add/operator/toPromise');
 var PizzaService = (function () {
     function PizzaService(http) {
         this.http = http;
-        this._pizzassUrl = 'http://10.130.241.86:9082/';
+        this._pizzassUrl = 'http://172.17.8.101:9082/';
         this.headers = new http_1.Headers([{
                 'Content-Type': 'application/json' },
             { 'Access-Control-Allow-Origin': '*' }
