@@ -59,7 +59,7 @@ node {
 }
 
 node {
-    stage 'deploy1'
+    stage 'deploy2'
 }
 
 
