@@ -54,7 +54,7 @@ input message: "Does build look good. Deploy to stage?"
 
 stage name: 'Staging', concurrency: 1
 node {
-    echo 'Staging server looks to be alive'
+    echo 'Staging server looks to be alive '
     echo "Deployed to staging"
 }
 
