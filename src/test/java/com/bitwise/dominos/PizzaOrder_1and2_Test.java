@@ -12,7 +12,8 @@ import org.junit.Test;
 
 public class PizzaOrder_1and2_Test extends PizzaOrderTestValidator {
     
-    //Ci Check
+    //Ci Check  1
+    //CI Check 2
 
     @Test
     public void creatingOrderNumberOne(){
