@@ -58,4 +58,8 @@ node {
     echo "Deployed to staging"
 }
 
+node {
+    stage 'deploy'
+}
+
 
